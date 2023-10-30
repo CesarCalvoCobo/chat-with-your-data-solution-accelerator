@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import styles from "./Chat.module.css";
 import Azure from "../../assets/Azure.svg";
+import Avanade from "../../assets/avanadeicon.svg";
 
 import {
     ChatMessage,
@@ -133,12 +134,12 @@ const Chat = () => {
                     {!lastQuestionRef.current ? (
                         <Stack className={styles.chatEmptyState}>
                             <img
-                                src={Azure}
+                                src={Avanade}
                                 className={styles.chatIcon}
                                 aria-hidden="true"
                             />
                             <h1 className={styles.chatEmptyStateTitle}>Start chatting</h1>
-                            <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions</h2>
+                            <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions based only on the documents and links provided</h2>
                         </Stack>
                     ) : (
                         <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? "40px" : "0px"}}>

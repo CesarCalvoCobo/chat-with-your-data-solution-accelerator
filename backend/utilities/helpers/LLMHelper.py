@@ -2,6 +2,8 @@ import openai
 from typing import List
 from langchain.chat_models import AzureChatOpenAI
 from langchain.embeddings import OpenAIEmbeddings
+from langchain.embeddings import GPT4AllEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from .EnvHelper import EnvHelper
 
@@ -28,7 +30,9 @@ class LLMHelper:
                                max_tokens=self.llm_max_tokens, openai_api_version=openai.api_version)
     
     def get_embedding_model(self):
-        return OpenAIEmbeddings(deployment=self.embedding_model, chunk_size=1)
+        #return OpenAIEmbeddings(deployment=self.embedding_model, chunk_size=1)
+        return GPT4AllEmbeddings(model="./ggml-all-MiniLM-L6-v2-f16.bin", n_ctx=512, n_threads=8)
+        #return HuggingFaceEmbeddings()
     
     def get_chat_completion_with_functions(self, messages: List[dict], functions: List[dict], function_call: str="auto"):
         return openai.ChatCompletion.create(
