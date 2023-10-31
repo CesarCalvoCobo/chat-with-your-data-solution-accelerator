@@ -31,8 +31,9 @@ class LLMHelper:
     
     def get_embedding_model(self):
         #return OpenAIEmbeddings(deployment=self.embedding_model, chunk_size=1)
-        return GPT4AllEmbeddings(model="./ggml-all-MiniLM-L6-v2-f16.bin", n_ctx=512, n_threads=8)
-        #return HuggingFaceEmbeddings()
+        return GPT4AllEmbeddings()         
+        #model_path = "jinaai/jina-embeddings-v2-small-en"
+        #return HuggingFaceEmbeddings(model_name=model_path, cache_folder="../models")
     
     def get_chat_completion_with_functions(self, messages: List[dict], functions: List[dict], function_call: str="auto"):
         return openai.ChatCompletion.create(

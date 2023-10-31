@@ -1,0 +1,13 @@
+docker build -f docker\WebApp.Dockerfile -t azragaccelerator.azurecr.io/azragfe:v1 .
+
+az acr login --name azragaccelerator.azurecr.io
+
+   docker push azragaccelerator.azurecr.io/azragfe:v1
+
+
+docker build -f docker\AdminWebApp.Dockerfile -t azragaccelerator.azurecr.io/azragadmin:v1 .
+docker push azragaccelerator.azurecr.io/azragadmin:v1
+
+
+docker build -f docker\Backend.Dockerfile -t azragaccelerator.azurecr.io/azragbe:v1 .
+docker push azragaccelerator.azurecr.io/azragbe:v1
